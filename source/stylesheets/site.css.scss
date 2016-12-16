@@ -1,0 +1,90 @@
+@charset "utf-8";
+@import "normalize";
+@import 'settings';
+@import 'foundation';
+@include foundation-everything(true);
+
+$numeroVerde-color: #008a2e !default;
+$evidence-color: #ffed00 !default;
+$button-background-hover: scale-color($evidence-color, $lightness: -15%);
+$rosso-color: #FF0A0A !default;
+$ctaButton-header-color: $evidence-color !default;
+$ctaButton-radius: 30px !default;
+
+
+.ctaButton {
+    @include button-style($evidence-color, $button-background-hover, #000000);
+    font-size: rem-calc(20, null);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+.prezzo {
+    font-size: 1.8rem;
+    color: #ff2424;
+    padding: 0.3125rem;
+    font-weight: bold;
+}
+
+.prezzo_intero {
+    text-decoration: line-through;
+}
+
+.leggero {
+  color: $dark-gray;
+  font-size: 0.9rem;
+}
+
+.p_stretto {
+  line-height: 1.2;
+}
+
+div.spazio_bianco {
+  height: 4.5rem;
+}
+
+.stelle {
+  color: #fad220;
+  font-size: 2rem;
+}
+
+.border {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: scale-color($dark-gray, $lightness: 80%);
+}
+
+.menu-text {
+    padding: 0rem;
+}
+
+.top-bar {
+  background-color: #ffffff;
+  padding: 0rem;
+
+  ul {
+    background-color: #ffffff;
+  }
+}
+
+.box_nverde {
+    line-height: 2.1875rem;
+}
+
+.numero-verde {
+    font-size: rem-calc(40, null);
+    color: #008a2e;
+}
+
+.center {
+    text-align: center;
+}
+
+.vantaggiForm {
+    padding-top: 50px;
+    text-align: center;
+    h5 {
+        margin-bottom: 20px;
+    }
+}
