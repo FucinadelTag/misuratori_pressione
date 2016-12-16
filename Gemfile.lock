@@ -137,6 +137,7 @@ PLATFORMS
 DEPENDENCIES
   middleman (>= 4.0.0)
   middleman-blog (>= 4.0.0)
+  middleman-cli
   middleman-compass (>= 4.0.0)
   middleman-livereload
   middleman-minify-html
