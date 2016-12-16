@@ -12,9 +12,6 @@ build:
             code: |
                 export RUBYOPT="-KU -E utf-8:utf-8"
         - script:
-            name: middleman sync blog
-            code: bundle exec middleman prismic prismic blog
-        - script:
             name: middleman build
             code: bundle exec middleman build --verbose
 deploy:
