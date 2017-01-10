@@ -12,6 +12,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
 
         <link rel="shortcut icon" href="https://lh4.googleusercontent.com/-4EFGp8NIxRg/UotMLOfvJtI/AAAAAAAAeGI/i8xYnYOxMBk/s16-no/favicon.ico" />
 
@@ -22,14 +23,34 @@
     <body class="<%= page_classes %>">
 
         <div class="row border">
-            <div class="top-bar">
-                <div class="top-bar-left">
-                    <ul class="menu">
-                        <li class="menu-text"><a href="/"><img src="https://prismic-io.s3.amazonaws.com/solede/ad1a0872cb0cc3f8bbdc38aec95e622b7bff6b0a.png"></a></li>
-                    </ul>
+            <div class="columns">
+                <div class="top-bar">
+                    <div class="top-bar-left">
+                        <ul class="menu">
+                            <li class="menu-text"><a href="/"><img src="https://prismic-io.s3.amazonaws.com/solede/ad1a0872cb0cc3f8bbdc38aec95e622b7bff6b0a.png"></a></li>
+                        </ul>
+                    </div>
+                    <div class="top-bar-right">
+                        <ul class="menu">
+                            <li>
+                                <a href="#" title="Accedi al tuo account" class="snipcart-user-profile">
+                                    <span class="snipcart-user-email">Accedi al tuo account</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="snipcart-user-logout">
+                                    Logout
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="button snipcart-checkout">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrello
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <%= yield %>
@@ -47,6 +68,11 @@
       </footer>
 
         <%= javascript_include_tag :all %>
+
+
+        <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="MDMxY2I2NGItYmE4Ny00ODg5LTk3Y2YtZjUzODA2YzViN2M5NjM2MTk2NTM1MzM1ODI2MDUy"></script>
+        <script type="text/javascript" src="/javascripts/snipcart.js" ></script>
+
 
         <script type="text/javascript">
             var _iub = _iub || [];
