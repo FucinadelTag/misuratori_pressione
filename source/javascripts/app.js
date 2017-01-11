@@ -8,4 +8,5 @@ $( "#acquistaSubito" ).on( "click", function() {
         eventAction: 'click',
         eventLabel: 'acquistaSubito'
     });
+    console.log ('acquistaSubito');
 });
