@@ -96,7 +96,7 @@ province_state:
 billing_address:
 "Dati di Fatturazione",
 shipping_address:
-"Shipping address",
+"Indirizzo di spedizione",
 payment_informations:
 "Dati di Pagamento",
 payment_informations_bill_me_later:
