@@ -4,4 +4,3 @@
 
 //= require app
 //= require dati_form
-//= require snipcart
