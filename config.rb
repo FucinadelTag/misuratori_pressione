@@ -79,6 +79,9 @@ end
 
 # Build-specific configuration
 configure :build do
+
+  activate :gzip
+
   # Minify CSS on build
   activate :minify_css
 
