@@ -23,3 +23,5 @@ gem "middleman-sprockets"
 gem "middleman-blog", ">= 4.0.0"
 
 gem "middleman-minify-html"
+
+gem "babel-transpiler"
