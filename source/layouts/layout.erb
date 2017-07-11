@@ -104,38 +104,6 @@
             </div>
         </div>
 
-        <section class="title-container show-for-medium" style="background: url(<%= current_page.data.immagineTestata %>) center no-repeat; background-size: cover;">
-            <div class="row clearfix">
-                <div class="columns large-offset-5 columns title">
-                    <%= partial "partials/acquisto_misuratore_pressione", :locals => { :titolo => "<h1>Misuratore di pressione Solede</h1>"} %>
-                </div>
-            </div>
-        </section>
-
-        <section class="title-container show-for-small-only">
-            <div class="row clearfix">
-                <div class="title float-right">
-                    <h1 class="title-mobile">
-                        <% if current_page.data.testata.prima_riga != ''  %>
-                            <%= current_page.data.testata.prima_riga %>
-                        <% end %>
-                    </h1>
-                    <br>
-                    <h2 class="medium">
-                        <% if current_page.data.testata.seconda_riga != ''  %>
-                            <%= current_page.data.testata.seconda_riga %><br />
-                        <% end %>
-                    </h2>
-                    <img src="<%= current_page.data.immagineTestata %>">
-                    <br><br>
-                    <% if current_page.data.testata.hasButton != 0  %>
-                        <h3 class="show-for-medium">
-                            <%= partial "partials/callToAction" %>
-                        </h3>
-                    <% end %>
-                </div>
-            </div>
-        </section>
 
         <%= yield %>
 
