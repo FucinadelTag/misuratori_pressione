@@ -1,0 +1,44 @@
+{
+  "name": "marketcloud-js",
+  "version": "2.3.3",
+  "authors": [
+    "Mattia Alfieri m.alfieri@marketcloud.it"
+  ],
+  "description": "Javascript bindings for Marketcloud API.",
+  "main": "dist/marketcloud.min.js",
+  "keywords": [
+    "marketcloud",
+    "ecommerce",
+    "api",
+    "client",
+    "sdk"
+  ],
+  "license": "MIT",
+  "homepage": "www.marketcloud.it",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests",
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "bluebird": "^3.4.6"
+  },
+  "moduleType": [
+    "globals"
+  ],
+  "_release": "2.3.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.3.3",
+    "commit": "fd5149975cec66ccc6ca29469e7551700a78b958"
+  },
+  "_source": "https://github.com/Marketcloud/marketcloud-js.git",
+  "_target": "^2.3.3",
+  "_originalSource": "marketcloud-js",
+  "_direct": true
+}
