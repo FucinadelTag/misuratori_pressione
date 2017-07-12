@@ -5,6 +5,10 @@
   "dependencies": {
     "foundation-sites": "~6.2.4",
     "modernizr": "~3.3.1",
-    "marketcloud-js": "^2.3.3"
+    "marketcloud-js": "^2.3.3",
+    "mustache.js": "mustache#^2.3.0",
+    "jquery-serialize-object": "^2.5.0",
+    "numeral": "^2.0.6",
+    "handlebars": "^4.0.10"
   }
 }

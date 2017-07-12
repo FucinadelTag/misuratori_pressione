@@ -12,6 +12,17 @@ $rosso-color: #FF0A0A !default;
 $ctaButton-header-color: $evidence-color !default;
 $ctaButton-radius: 30px !default;
 
+.carrello {
+  .intestazione {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: scale-color($dark-gray, $lightness: 80%);
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: scale-color($dark-gray, $lightness: 80%);
+  }
+}
+
 .title-container {
     background-size: cover;
     padding-top: 3%;

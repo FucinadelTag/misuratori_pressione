@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="columns">
+        <h2>Carrello</h2>
+    </div>
+</div>
+<div class="row carrello">
+    <div class="columns small-12">
+        <div class="row align-left intestazione">
+            <div class="small-2 columns">
+            </div>
+            <div class="small-4 columns">
+                <b>Prodotto</b>
+            </div>
+            <div class="small-3 columns">
+                Quantità
+            </div>
+            <div class="small-3 columns">
+                Prezzo
+            </div>
+
+        </div>
+        {{#items}}
+            <div class="row align-left align-middle">
+                <div class="small-2 columns">
+                    <img src="{{images.0}}">
+                </div>
+                <div class="small-4 columns">
+                    <b>{{name}}</b>
+                </div>
+                <div class="small-3 columns">
+                    {{quantity}}
+                </div>
+                <div class="small-3 columns">
+                    {{price}}
+                </div>
+
+            </div>
+        {{/items}}
+    </div>
+
+     CARRELLO - <b>{{items_total}}</b>
+</div>

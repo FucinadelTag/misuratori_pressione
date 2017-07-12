@@ -67,7 +67,7 @@
                             <li class="menu-text"><a href="/"><img src="https://prismic-io.s3.amazonaws.com/solede/ad1a0872cb0cc3f8bbdc38aec95e622b7bff6b0a.png"></a></li>
 
                             <li class="hide-for-medium">
-                                <a href="#" class="snipcart-checkout">
+                                <a href="/carrello">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrello
                                 </a>
                                 <div id="cartNO"></div>
@@ -79,7 +79,7 @@
                     <div class="top-bar-right show-for-medium">
                         <ul class="menu">
                             <li>
-                                <a href="#" class="snipcart-checkout">
+                                <a href="/carrello">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrello
                                 </a>
                                 <div id="cartNO"></div>
@@ -127,9 +127,9 @@
 
         <%= javascript_include_tag :all %>
 
-        <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="MDBmMGFjMzItODhhNy00OWYzLThkOTktYzU4MGNjNjg5NmQ1NjM2MTk2NTM1MzM1ODI2MDUy"></script>
+        <!-- <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="MDBmMGFjMzItODhhNy00OWYzLThkOTktYzU4MGNjNjg5NmQ1NjM2MTk2NTM1MzM1ODI2MDUy"></script>
         <script type="text/javascript" src="/javascripts/it.js" ></script>
-        <script type="text/javascript" src="/javascripts/snipcart.js" ></script>
+        <script type="text/javascript" src="/javascripts/snipcart.js" ></script> -->
 
 
         <script type="text/javascript">
@@ -150,7 +150,9 @@
 
             };
         </script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js" charset="UTF-8" async></script>
+        <% if current_page.data.conversionCode  %>
+            <%= current_page.data.conversionCode %>
+        <% end %>
 
     </body>
 </html>
