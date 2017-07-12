@@ -58,11 +58,11 @@ apply_promo_code:
 my_cart:
 "Carrello",
 my_cart_content:
-"Contenuto del carrello",
+"Carrello",
 shipping_method:
 "Spedizione",
 payment_method:
-"Dati Pagamento",
+"Metodo di Pagamento",
 confirm_order:
 "Conferma l'ordine",
 bill_me_later:
@@ -88,13 +88,13 @@ promo_code_rate_on_order:
 promo_code_alternate_price:
 "special price on products",
 total:
-"Totale",
+"Totale (spedizioni incluse)",
 total_paid:
 "Totale pagato",
 province_state:
 "Provincia",
 billing_address:
-"Dati di Fatturazione",
+"Indirizzo",
 shipping_address:
 "Indirizzo di spedizione",
 payment_informations:
