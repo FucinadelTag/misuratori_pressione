@@ -12,15 +12,28 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
 
 ---
 
-<section class="title-container show-for-medium" style="background: url(<%= current_page.data.immagineTestata %>) center no-repeat; background-size: cover;">
-    <div class="row clearfix">
-        <div class="columns large-offset-5 columns title">
+<section class="title-container show-for-large" style="background: url(<%= current_page.data.immagineTestata %>) center no-repeat; background-size: cover;">
+    <div class="row clearfix align-right">
+        <div class="columns large-7  title">
+            <h1>Misuratore di pressione Solede</h1>
             <%= partial "partials/acquisto_misuratore_pressione", :locals => { :titolo => "<h1>Misuratore di pressione Solede</h1>"} %>
         </div>
     </div>
 </section>
 
-<div class="spazio_bianco"></div>
+<section class="title-container hide-for-large">
+    <div class="row clearfix">
+        <div class="title float-center">
+            <h1>Misuratore di pressione Solede</h1>
+            <img src="<%= current_page.data.immagineTestata %>">
+            <br><br>
+            <%= partial "partials/acquisto_misuratore_pressione", :locals => { :titolo => "<h1>Misuratore di pressione Solede</h1>"} %>
+        </div>
+    </div>
+</section>
+
+
+<%= partial "partials/divisorio" %>
 
 <div class="row">
     <div class="columns">
@@ -38,8 +51,9 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
 </div>
 
 
-<div class="spazio_bianco"></div>
-<section class="title-container" style="background: url(https://prismic-io.s3.amazonaws.com/misuratoripressione/49f9714335cec9a32cfdfcba53d7aabbe1759a1e_dettagliouomo001.jpg) center no-repeat; background-size: cover;">
+<%= partial "partials/divisorio" %>
+
+<section class="title-container show-for-medium" style="background: url(https://prismic-io.s3.amazonaws.com/misuratoripressione/49f9714335cec9a32cfdfcba53d7aabbe1759a1e_dettagliouomo001.jpg) center no-repeat; background-size: cover;">
     <div class="row clearfix align-left">
         <div class="columns large-4 title">
             <h2>Previeni le malattie cardiovascolari</h2>
@@ -52,9 +66,23 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
         </div>
     </div>
 </section>
+<section class="title-container show-for-small-only">
+    <div class="row clearfix">
+        <div class="title float-center">
+            <h2>Previeni le malattie cardiovascolari</h2>
+            <img src="https://prismic-io.s3.amazonaws.com/misuratoripressione/49f9714335cec9a32cfdfcba53d7aabbe1759a1e_dettagliouomo001.jpg">
+            <p>
+                L'ipertensione Arteriosa (asintomatica) è la principale causa di malattie cardiovascolari (infarto del miocardio, ictus cerebrale, scompenso cardiaco) e in Italia provoca <strong>240.000</strong> morti all'anno
+            </p>
+            <p>
+                <i>Lo sfigmomanometro ti permette di tenere monitorata autonomamente la pressione direttamente da casa tua. Ogni giorno!</i>
+            </p>
+        </div>
+    </div>
+</section>
 
 
-<div class="spazio_bianco"></div>
+<%= partial "partials/divisorio" %>
 
 <div class="row">
     <div class="columns">
@@ -82,9 +110,9 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
     </div>
 </div>
 
-<div class="spazio_bianco"></div>
+<%= partial "partials/divisorio" %>
 
-<section class="title-container" style="background: url(https://prismic-io.s3.amazonaws.com/misuratoripressione/8d55526052692585f4bdba2d7e5c874c45c88f58_uomo004c.jpg) center no-repeat; background-size: cover;">
+<section class="title-container show-for-medium" style="background: url(https://prismic-io.s3.amazonaws.com/misuratoripressione/8d55526052692585f4bdba2d7e5c874c45c88f58_uomo004c.jpg) center no-repeat; background-size: cover;">
     <div class="row clearfix align-right">
         <div class="columns large-5 title">
             <h2>Per tutti, ogni giorno</h2>
@@ -102,8 +130,28 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
         </div>
     </div>
 </section>
+<section class="title-container show-for-small-only">
+    <div class="row clearfix">
+        <div class="title float-center">
+            <h2>Per tutti, ogni giorno</h2>
+            <img src="https://prismic-io.s3.amazonaws.com/misuratoripressione/8d55526052692585f4bdba2d7e5c874c45c88f58_uomo004c.jpg">
+            <p>Il nostro misuratore di pressione è pensato per essere usato quotidianamente. Non richiede manutenzione, è sempre preciso ed accurato e di semplice uso</p>
 
-<div class="spazio_bianco"></div>
+            <ul>
+                <li>Dotato di <strong>ampio</strong> schermo</li>
+                <li>Con <strong>grandi numeri</strong>, facilmente leggibili</li>
+                <li>Media delle <strong>ultime 3 misurazioni</strong> consecutive</li>
+                <li>Indica istantaneamente la pressione irregolare (WHO)</li>
+                <li>Capace di segnalare un eventuale battito cardiaco irregolare (IHB)</li>
+                <li>90 Misurazioni memorizzabili per 2 persone</li>
+                <li>Preserva le batterie spegnendosi automaticamente dopo 3 minuti di inutilizzo</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<%= partial "partials/divisorio" %>
+
 <div class="row">
     <div class="columns">
         <h2>Consigliato da medici e professionisti</h2>
@@ -131,7 +179,8 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
         <img src="https://prismic-io.s3.amazonaws.com/misuratoripressione/83d8eb98f909d9a77c12ae257b1a290712b92dc5_dottore1.jpg">
     </div>
 </div>
-<div class="spazio_bianco"></div>
+
+<%= partial "partials/divisorio" %>
 
 <div class="row">
     <div class="columns">
@@ -161,9 +210,10 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
         </div>
     </div>
 </div>
-<div class="spazio_bianco"></div>
 
-<section class="title-container" style="background: url(https://prismic-io.s3.amazonaws.com/misuratoripressione/4fe50625f43a222aa95adae58790ce4e83878f09_dettagliouomo004-copy.jpg) center no-repeat; background-size: cover;">
+<%= partial "partials/divisorio" %>
+
+<section class="title-container show-for-medium" style="background: url(https://prismic-io.s3.amazonaws.com/misuratoripressione/4fe50625f43a222aa95adae58790ce4e83878f09_dettagliouomo004-copy.jpg) center no-repeat; background-size: cover;">
     <div class="row clearfix align-left">
         <div class="columns large-7 columns title">
             <%= partial "partials/acquisto_misuratore_pressione", :locals => { :titolo => "<h1>Misuratore di pressione Solede</h1>"} %>
@@ -171,8 +221,19 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
     </div>
 </section>
 
+<section class="title-container show-for-small-only">
+    <div class="row clearfix">
+        <div class="title float-center">
+            <h1>Misuratore di pressione Solede</h1>
+            <img src="https://prismic-io.s3.amazonaws.com/misuratoripressione/4fe50625f43a222aa95adae58790ce4e83878f09_dettagliouomo004-copy.jpg">
+            <br><br>
+            <%= partial "partials/acquisto_misuratore_pressione", :locals => { :titolo => "<h1>Misuratore di pressione Solede</h1>"} %>
+        </div>
+    </div>
+</section>
 
-<div class="spazio_bianco"></div>
+
+<%= partial "partials/divisorio" %>
 
 <div class="row">
     <div class="columns">
@@ -214,7 +275,7 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/eb064eb
     </div>
 </div>
 
-<div class="spazio_bianco"></div>
+<%= partial "partials/divisorio" %>
 
 <div class="row">
     <div class="columns small-12 medium-5 small-order-2 medium-order-1">
