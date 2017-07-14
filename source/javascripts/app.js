@@ -13,6 +13,23 @@ $( ".acquistaSubito" ).click(function( event ) {
 
 });
 
+var updateCart = function (formData) {
+
+    let cart = JSON.parse(localStorage.getItem('cart'));
+
+    MarketCloud.carts.update(cart.id,[
+                      {'product_id':formData.itemId,'quantity':formData.quantity}
+      ],function(err,response){
+        if (err) {
+            console.log (err);
+        } else {
+            localStorage.setItem('cart', JSON.stringify(response.data));
+            window.location.replace("/carrello");
+        }
+    })
+
+}
+
 var addToCart = function (productId) {
 
     let cart = JSON.parse(localStorage.getItem('cart'))
@@ -49,7 +66,7 @@ var showCart = function () {
     console.log (cart);
 
     $.get(templateUrl, function(template) {
-        var rendered = Mustache.render(template, cart);
-        $('#carrello').html(rendered);
+        var theTemplate = Handlebars.compile(template);
+        $('#carrello').html(theTemplate(cart));
     });
 }

@@ -1,42 +1,97 @@
 <div class="row">
-    <div class="columns">
-        <h2>Carrello</h2>
-    </div>
-</div>
-<div class="row carrello">
-    <div class="columns small-12">
-        <div class="row align-left intestazione">
-            <div class="small-2 columns">
-            </div>
-            <div class="small-4 columns">
-                <b>Prodotto</b>
-            </div>
-            <div class="small-3 columns">
-                Quantità
-            </div>
-            <div class="small-3 columns">
-                Prezzo
+    <div class="columns medium-7 ordine">
+        <div class="row">
+            <div class="columns">
+                <h2>Concludi l'ordine</h2>
             </div>
 
         </div>
+
+    </div>
+    <div class="columns medium-5 elenco-prodotti">
+        <div class="row">
+            <div class="columns head-box">
+                Riepilogo ordine
+            </div>
+        </div>
+        <div class="row align-right riga-costo">
+            <div class="columns small-4">
+                Totale prodotti:
+            </div>
+            <div class="columns small-8">
+                {{formatEuro total}}
+            </div>
+        </div>
+        <div class="row align-right riga-costo">
+            <div class="columns small-4">
+                Spedizione:
+            </div>
+            <div class="columns small-8">
+                0,00 €
+            </div>
+        </div>
+        <div class="row align-right riga-costo">
+            <div class="columns small-4">
+                <strong>Totale</strong>:
+            </div>
+            <div class="columns small-8">
+                <strong>{{formatEuro total}}</strong>
+            </div>
+        </div>
+
+        <div class="spazio_bianco-small"></div>
+
+        <div class="row">
+            <div class="columns head-box">
+                Elenco prodotti
+            </div>
+        </div>
         {{#items}}
-            <div class="row align-left align-middle">
-                <div class="small-2 columns">
-                    <img src="{{images.0}}">
+        <div class="box-prodotto">
+            <div class="row">
+                <div class="columns titolo-prodotto">
+                    {{name}}
                 </div>
-                <div class="small-4 columns">
-                    <b>{{name}}</b>
+            </div>
+            <div class="row align-right align-middle">
+                <div class="large-5 columns">
+                        <img src="{{images}}">
                 </div>
-                <div class="small-3 columns">
-                    {{quantity}}
-                </div>
-                <div class="small-3 columns">
-                    {{price}}
+                <div class="large-7 columns">
+                    <span class="labelProdotti">Prezzo Unitario</span>: <span>{{formatEuro price}}</span><br>
+                    <form class="formCartProduct" id="{{id}}" idaccept-charset="UTF-8" method="POST">
+                        <input type="hidden" name="itemId" value="{{id}}">
+                        <label>Quantità:
+                            <input type="number" name="quantity" value="{{quantity}}" required>
+                        </label>
+                        <button class="button inviaRichiesta" type="submit" value="Submit">Modifica la Quantità</button>
+                    </form>
+
                 </div>
 
             </div>
+        </div>
+
         {{/items}}
     </div>
 
-     CARRELLO - <b>{{items_total}}</b>
 </div>
+
+<script type="text/javascript">
+    $( ".formCartProduct" ).submit(function( event ) {
+
+        event.preventDefault();
+
+        let formId = event.currentTarget.id;
+        let stringForm = 'form#' + formId;
+
+        let formData = $(stringForm).serializeObject();
+
+        if (formData.quantity <= 0) {
+            formData.quantity  = 1;
+        }
+
+        updateCart (formData);
+
+    });
+</script>

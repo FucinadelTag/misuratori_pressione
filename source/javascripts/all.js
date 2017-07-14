@@ -7,7 +7,10 @@
 
 //= require marketcloud-js/dist/marketcloud.min
 
-//= require app
 //= require dati_form
 //= require foundation
 //= require handlebars/handlebars.min
+//= require handlebars.helpers.js
+
+
+//= require app

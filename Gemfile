@@ -28,3 +28,5 @@ gem "babel-transpiler"
 
 
 gem "moltin"
+
+gem 'opal'

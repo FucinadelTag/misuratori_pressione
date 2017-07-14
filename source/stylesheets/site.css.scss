@@ -12,6 +12,48 @@ $rosso-color: #FF0A0A !default;
 $ctaButton-header-color: $evidence-color !default;
 $ctaButton-radius: 30px !default;
 
+.head-box {
+  font-weight: 800;
+  font-size: 120%;
+  text-align: center;
+  background-color: scale-color($dark-gray, $lightness: 80%);
+}
+
+.riga-costo {
+  text-align: right;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-style: none none solid none;
+  border-width: 1px;
+  border-color: scale-color($dark-gray, $lightness: 80%);
+}
+
+.elenco-prodotti {
+  margin-top: 5px;
+
+  .labelProdotti {
+    font-style: italic;
+    font-size: 90%;
+  }
+  .dataProdotti {
+    background-color: scale-color($dark-gray, $lightness: 80%);
+    padding: 3px;
+  }
+
+  .box-prodotto {
+    margin-top: 3px;
+
+    .titolo-prodotto {
+      font-weight: 700;
+      font-size: 100%;
+      font-style: italic;
+      border-style: solid none solid none;
+      border-width: 1px;
+      border-color: scale-color($dark-gray, $lightness: 80%);
+    }
+  }
+}
+
 .carrello {
   .intestazione {
     border-bottom-width: 1px;
@@ -94,6 +136,11 @@ $ctaButton-radius: 30px !default;
 div.spazio_bianco {
   height: 4.5rem;
 }
+
+div.spazio_bianco-small {
+  height: 1.5rem;
+}
+
 
 .stelle {
   color: #fad220;
