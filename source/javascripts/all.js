@@ -7,10 +7,19 @@
 
 //= require marketcloud-js/dist/marketcloud.min
 
+//= require card/dist/card
+
+//= require bower_components/braintree-web/client
+//= require bower_components/braintree-web/hosted-fields
+//= require bower_components/braintree-web/paypal
+//= require bower_components/braintree-web/data-collector
+
+
 //= require dati_form
 //= require foundation
 //= require handlebars/handlebars.min
 //= require handlebars.helpers.js
+//= require jquery.payment.min
 
 
 //= require app

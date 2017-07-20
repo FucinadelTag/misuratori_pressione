@@ -57,153 +57,184 @@
                         </label>
                     </div>
                 </div>
-                <fieldset class="fieldset">
-                    <legend><i class="fa fa-lock" aria-hidden="true"></i> Paga con Carta di Credito</legend>
-                        <div class="row align-middle">
-                            <div class="columns medium-12 mall-12">
-                                <div class="row align-bottom">
-                                    <div class="medium-10 columns form-group">
-                                        <label for="cc-number" class="control-label">Numero Carta di Credito</label>
-                                        <input id="cc-number" name="number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required>
-                                    </div>
-                                    <div class="columns card_type">
-                                        <i id="iconaCarta" class="fa fa-credit-card" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="row align-bottom">
-                                    <div class="medium-5 columns form-group">
-                                        <label for="cc-exp" class="control-label">Data di scadenza  <span class="small">- MM/AA</span></label>
-                                        <input id="cc-exp" name="exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required>
-
-                                    </div>
-                                    <div class="medium-5 columns form-group">
-                                        <label for="cc-cvc" class="control-label">CVV <span class="small">- 3/4 cifre sul retro della carta</span></label>
-                                        <input id="cc-cvc" name="cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" required>
-
-                                    </div>
-                                    <div class="medum-2 columns">
-                                        <img src="https://s3-eu-west-1.amazonaws.com/cdn.fucinadeltag.it/icons/credit-card-with-cvv-code.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </fieldset>
+                <div class="row">
+                    <div class="columns medium-12 mall-12">
+                        <div id="dropin-container"></div>
+                    </div>
+                </div>
                 <div class="row align-center">
                     <div class="medium-4 small-12 columns">
                         <button class="button inviaPagamento" type="submit" value="Submit">Concludi l'ordine!</button>
                     </div>
-                    <h2 class="validation"></h2>
                 </div>
             </form>
         </div>
 
-    <style type="text/css" media="screen">
-        .has-error input {
-          border-width: 2px;
-          border-color: red;
-        }
-        .validation.text-danger:after {
-          content: 'Validation failed';
-        }
-        .validation.text-success:after {
-          content: 'Validation passed';
-        }
-        .card_type {
-            font-size: 50px
-        }
-    </style>
-
   <script>
 
-    jQuery(function($) {
-      $('.cc-number').payment('formatCardNumber');
-      $('.cc-exp').payment('formatCardExpiry');
-      $('.cc-cvc').payment('formatCardCVC');
+        braintree.dropin.create({
+            authorization: 'sandbox_fywvymd4_qbbdrsz2pjdq25d5',
+            container: '#dropin-container',
+            locale: 'it_IT',
+            translations: {
+                payWithCard: 'Paga con Carta di Credito',
+                cvvThreeDigitLabelSubheading: '(3 cifre sul retro della carta)',
+                postalCodeLabel: 'Codice di Avviamento Postale'
+            }
+        }, function (createErr, instance) {
+            $( "#formOrdine" ).click(function( event ) {
 
-      $.fn.toggleInputError = function(erred) {
-        this.parent('.form-group').toggleClass('has-error', erred);
-        return this;
-      };
+                event.preventDefault();
 
-      $('.cc-number').keyup(function(e) {
-        let cardType = $.payment.cardType($('.cc-number').val());
-
-        $('#iconaCarta').removeClass(function(index, className) {
-            return (className.match(/(^|\s)fa-cc-\S+/g) || []).join(' ');
-        });
-
-        if (cardType === null){
-            $('#iconaCarta').addClass('fa-credit-card');
-
-        } else {
-            let cardIcon = 'fa-cc-' + cardType;
-
-            $('#iconaCarta').addClass(cardIcon);
-        }
-      });
-
-
-      $('form').submit(function(e) {
-        e.preventDefault();
-        let cardType = $.payment.cardType($('.cc-number').val());
-        $('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
-        $('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
-        $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
-        $('.validation').removeClass('text-danger text-success');
-        $('.validation').addClass($('.has-error').length ? 'text-danger' : 'text-success');
-
-        if ($('.has-error').length <= 0) {
-            braintree.client.create ({
-                authorization: 'sandbox_fywvymd4_qbbdrsz2pjdq25d5'
-            },function (createErr, clientInstance) {
-                var formData = $('form#formOrdine').serializeObject();
-
-                console.log ();
-
-                var data = {
-                    creditCard: {
-                        number: formData.number,
-                        cvv: formData.cvc.replace(/\s/g, ''),
-                        expirationDate: formData.exp.replace(/\s/g, ''),
-                        billingAddress: {
-                            postalCode: '20128'
-                        },
-                        options: {
-                            validate: false
-                        }
-                    }
-                };
-
-                clientInstance.request({
-                    endpoint: 'payment_methods/credit_cards',
-                    method: 'post',
-                    data: data
-                }, function (requestErr, response) {
-                    // More detailed example of handling API errors: https://codepen.io/braintree/pen/MbwjdM
-                    if (requestErr) { throw new Error(requestErr); }
-
-                    saveCreditCardResponse (response.creditCards[0]);
-                    createOrder (formData);
-                    //console.log('Got nonce:', response.creditCards[0].nonce);
-                });
+                var formData = $('#formOrdine').serializeObject();
 
                 console.log (formData);
 
+                instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+                        saveCreditCardResponse (payload);
+                });
             });
-        }
+        });
 
-        console.log ($('.has-error').length);
 
-      });
-    });
+    // var form = document.querySelector('#cardForm');
+    // var authorization = 'sandbox_fywvymd4_qbbdrsz2pjdq25d5';
+
+    // braintree.client.create({
+    //   authorization: authorization
+    // }, function(err, clientInstance) {
+    //   if (err) {
+    //     console.error(err);
+    //     return;
+    //   }
+    //   createHostedFields(clientInstance);
+    // });
+
+    // function createHostedFields(clientInstance) {
+    //   braintree.hostedFields.create({
+    //     client: clientInstance,
+    //     styles: {
+    //       'input': {
+    //         'font-size': '16px',
+    //         'font-family': 'courier, monospace',
+    //         'font-weight': 'lighter',
+    //         'color': '#ccc'
+    //       },
+    //       ':focus': {
+    //         'color': 'black'
+    //       },
+    //       '.valid': {
+    //         'color': '#8bdda8'
+    //       }
+    //     },
+    //     fields: {
+    //       number: {
+    //         selector: '#card-number',
+    //         placeholder: '4111 1111 1111 1111'
+    //       },
+    //       cvv: {
+    //         selector: '#cvv',
+    //         placeholder: '123'
+    //       },
+    //       expirationDate: {
+    //         selector: '#expiration-date',
+    //         placeholder: 'MM/YYYY'
+    //       },
+    //       postalCode: {
+    //         selector: '#postal-code',
+    //         placeholder: '11111'
+    //       }
+    //     }
+    //   }, function (err, hostedFieldsInstance) {
+    //     var teardown = function (event) {
+    //       event.preventDefault();
+    //       alert('Submit your nonce to your server here!');
+    //       hostedFieldsInstance.teardown(function () {
+    //         createHostedFields(clientInstance);
+    //         form.removeEventListener('submit', teardown, false);
+    //       });
+    //     };
+
+    //     form.addEventListener('submit', teardown, false);
+    //   });
+    // }
+
+    // $( "#formCard" ).submit(function( event ) {
+
+    //     event.preventDefault();
+
+    //     let formId = event.currentTarget.id;
+    //     let stringForm = 'form#' + formId;
+
+    //     var formData = $(stringForm).serializeObject();
+
+    //     console.log (formData.number.replace(/\s+/g, ''));
+
+    //     console.log (formData);
+
+    //     $.ajax({
+    //         method: "POST",
+    //         url: "https://api.marketcloud.it/v0/integrations/braintree/clientToken",
+    //         headers : {
+    //             "Authorization" : '3453bfe9-0252-45ba-a6fe-bba5f8b34120'
+    //         }
+    //     })
+    //     .done(function( response ) {
+    //         var braintreeClientToken = response.data.clientToken;
+
+    //         console.log (braintreeClientToken);
+
+    //         braintree.client.create({
+    //             authorization: braintreeClientToken
+    //         }, function (createErr, clientInstance) {
+    //             if (createErr) { throw new Error(createErr); }
+
+    //             let data = {
+    //                 creditCard: {
+    //                     number: formData.number,
+    //                     cvv: formData.cvc,
+    //                     expirationDate: formData.expiry,
+    //                     billingAddress: {
+    //                         postalCode: '20128'
+    //                     },
+    //                     options: {
+    //                         validate: false
+    //                     }
+    //                 }
+    //             };
+
+    //             clientInstance.request({
+    //                 endpoint: 'payment_methods/credit_cards',
+    //                 method: 'post',
+    //                 data: data
+    //             }, function (requestErr, response) {
+    //                 // More detailed example of handling API errors: https://codepen.io/braintree/pen/MbwjdM
+    //                 if (requestErr) { throw new Error(requestErr); }
+    //                     console.log (response);
+    //                     console.log('Got nonce:', response.creditCards[0].nonce);
+    //             });
+    //         });
+
+    //     })
+
+
+
+    // });
 
     // var card = new Card({
     //     // a selector or DOM element for the form where users will
     //     // be entering their information
-    //     form: '#formOrdine', // *required*
+    //     form: '#formCard', // *required*
     //     // a selector or DOM element for the container
     //     // where you want the card to appear
     //     container: '.card-wrapper', // *required*
+
+    //     formSelectors: {
+    //         numberInput: 'input#number', // optional — default input[name="number"]
+    //         expiryInput: 'input#expiry', // optional — default input[name="expiry"]
+    //         cvcInput: 'input#cvc', // optional — default input[name="cvc"]
+    //         nameInput: 'input#name' // optional - defaults input[name="name"]
+    //     },
 
     //     width: 350, // optional — default 350px
     //     formatting: true, // optional - default true
@@ -217,7 +248,7 @@
     //     // Default placeholders for rendered fields - optional
     //     placeholders: {
     //         number: '•••• •••• •••• ••••',
-    //         name: ' ',
+    //         name: 'Full Name',
     //         expiry: '••/••',
     //         cvc: '•••'
     //     },

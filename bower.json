@@ -9,6 +9,9 @@
     "mustache.js": "mustache#^2.3.0",
     "jquery-serialize-object": "^2.5.0",
     "numeral": "^2.0.6",
-    "handlebars": "^4.0.10"
+    "handlebars": "^4.0.10",
+    "card-js": "^1.0.14",
+    "card": "^2.3.0",
+    "braintree-web": "^3.19.1"
   }
 }
