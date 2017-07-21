@@ -22,8 +22,8 @@ var getCartId = function () {
 var getBillingAddress = function (userData) {
 
     let billing_address = {
-                full_name: 'Prova',
-                email: 'lorenzo@fucinadeltag.it',
+                full_name: userData.nome + ' ' + userData.cognome,
+                email: userData.email,
                 country: 'Italia',
                 city: 'mmmm',
                 address1: 'mmm',
@@ -43,10 +43,9 @@ var payOrder = function (){
         method : "Braintree",
         order_id : orderData.id,
         nonce : paymentData.nonce
-    },function(err,result){
+    },function(err, result){
+        console.log (result);
 
-        console.log(err);
-        console.log(result);
 
     // The payment was successful and the order was flagged as paid
     // You can log into your Braintree's Dashboard for further details
@@ -63,6 +62,10 @@ var createOrder = function (userData) {
     }
 
     MarketCloud.orders.create(the_order,function(err,response){
+
+        if (err) { throw new Error(err); }
+
+        console.log(response.data);
 
         saveOrder (response.data);
 

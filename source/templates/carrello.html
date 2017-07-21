@@ -28,6 +28,16 @@
         <div> -->
         <div class="spazio_bianco-small"></div>
         <div class="">
+            <div class="row">
+
+                <div class="columns">
+                    <div class="callout" data-closable>
+                        <button class="close-button" data-close>&times;</button>
+                        <p class="validation"></p>
+                    </div>
+                </div>
+
+            </div>
             <form data-abide class="formOrdine" id="formOrdine" idaccept-charset="UTF-8" method="POST">
                 <div class="row">
                     <div class="medium-6 columns">
@@ -65,6 +75,9 @@
                                     <div class="medium-10 columns form-group">
                                         <label for="cc-number" class="control-label">Numero Carta di Credito</label>
                                         <input id="cc-number" name="number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required>
+                                        <span class="form-error">
+                                            Il numero della carta di credito non è corretto
+                                        </span>
                                     </div>
                                     <div class="columns card_type">
                                         <i id="iconaCarta" class="fa fa-credit-card" aria-hidden="true"></i>
@@ -74,12 +87,16 @@
                                     <div class="medium-5 columns form-group">
                                         <label for="cc-exp" class="control-label">Data di scadenza  <span class="small">- MM/AA</span></label>
                                         <input id="cc-exp" name="exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required>
-
+                                        <span class="form-error">
+                                            La data di scadenza non è corretta
+                                        </span>
                                     </div>
                                     <div class="medium-5 columns form-group">
                                         <label for="cc-cvc" class="control-label">CVV <span class="small">- 3/4 cifre sul retro della carta</span></label>
                                         <input id="cc-cvc" name="cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" required>
-
+                                        <span class="form-error">
+                                            Il cvv deve essere di 3 o 4 cifre
+                                        </span>
                                     </div>
                                     <div class="medum-2 columns">
                                         <img src="https://s3-eu-west-1.amazonaws.com/cdn.fucinadeltag.it/icons/credit-card-with-cvv-code.png">
@@ -92,7 +109,7 @@
                     <div class="medium-4 small-12 columns">
                         <button class="button inviaPagamento" type="submit" value="Submit">Concludi l'ordine!</button>
                     </div>
-                    <h2 class="validation"></h2>
+
                 </div>
             </form>
         </div>
@@ -121,7 +138,8 @@
       $('.cc-cvc').payment('formatCardCVC');
 
       $.fn.toggleInputError = function(erred) {
-        this.parent('.form-group').toggleClass('has-error', erred);
+        this.toggleClass('is-invalid-input', erred);
+        this.next('.form-error').toggleClass('is-visible', erred);
         return this;
       };
 
@@ -145,25 +163,28 @@
 
       $('form').submit(function(e) {
         e.preventDefault();
+
+
+
         let cardType = $.payment.cardType($('.cc-number').val());
         $('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
-        $('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
+        //$('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
         $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
         $('.validation').removeClass('text-danger text-success');
         $('.validation').addClass($('.has-error').length ? 'text-danger' : 'text-success');
 
-        if ($('.has-error').length <= 0) {
+        console.log ($('.is-invalid-input').length);
+
+        if ($('.is-invalid-input').length <= 0) {
             braintree.client.create ({
                 authorization: 'sandbox_fywvymd4_qbbdrsz2pjdq25d5'
             },function (createErr, clientInstance) {
                 var formData = $('form#formOrdine').serializeObject();
 
-                console.log ();
-
                 var data = {
                     creditCard: {
                         number: formData.number,
-                        cvv: formData.cvc.replace(/\s/g, ''),
+                        cvv: formData.cvc,
                         expirationDate: formData.exp.replace(/\s/g, ''),
                         billingAddress: {
                             postalCode: '20128'
@@ -187,12 +208,8 @@
                     //console.log('Got nonce:', response.creditCards[0].nonce);
                 });
 
-                console.log (formData);
-
             });
         }
-
-        console.log ($('.has-error').length);
 
       });
     });
