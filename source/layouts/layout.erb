@@ -20,11 +20,11 @@
         <script src="https://unpkg.com/vuex"></script> -->
 
 
-
-
-</script>
-
         <%= stylesheet_link_tag :site %>
+
+        <% if current_page.data.headCode  %>
+            <%= current_page.data.headCode %>
+        <% end %>
 
         <!-- Facebook Pixel Code -->
             <script>
@@ -36,12 +36,13 @@
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window,document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
-                 fbq('init', '1866312190253539');
+                fbq('init', '277696526049584');
                 fbq('track', 'PageView');
             </script>
-
             <noscript>
-                <img height="1" width="1" src="https://www.facebook.com/tr?id=1866312190253539&ev=PageView&noscript=1"/>
+                <img height="1" width="1"
+                        src="https://www.facebook.com/tr?id=277696526049584&ev=PageView
+                        &noscript=1"/>
             </noscript>
         <!-- End Facebook Pixel Code -->
 
