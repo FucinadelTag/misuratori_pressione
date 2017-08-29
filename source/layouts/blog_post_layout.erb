@@ -1,0 +1,60 @@
+<% wrap_layout :master_layout do %>
+
+
+    <div class="row blog align-center">
+
+        <div class="small-12 medium-9 columns">
+
+            <div class="row">
+
+                <div class="small-12 columns title">
+                    <h2>
+                        <%= current_page.data.title %>
+                    </h2>
+
+                    <time><%= current_page.data.date.strftime('%b %e %Y') %></time>
+                    <p>
+                        <%= tag :img, :src => current_page.data.image, :title => current_page.data.title, :style =>"float:left;padding:10px" %>
+                        <i><%= current_page.data.summary %></i>
+                    </p>
+
+
+
+                </div>
+            </div>
+
+            <%= yield %>
+
+            <hr>
+
+                <div id="disqus_thread"></div>
+                <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                var disqus_config = function () {
+                    this.page.url = 'https://www.misuratore-pressione.eu<%= current_article.url %>';  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = '<%= current_article.slug %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+
+
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = '//misuratoripressione.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+
+        <%= partial "partials/aside" %>
+    </div>
+
+    <hr>
+<% end %>

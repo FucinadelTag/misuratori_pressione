@@ -1,0 +1,17 @@
+<!-- Sidebar -->
+
+<aside class="large-2 columns show-for-large">
+
+    <h5><%= link_to 'Home '+blog.options.name, '/'+blog.options.name %></h5>
+
+    <hr>
+    <% if  blog.tags.size > 0  %>
+        <h5>Tag</h5>
+        <div class="row">
+            <% blog.tags.each do |tag, articles| %>
+                <div class="small-12 columns small"><%= link_to tag+' ('+articles.size.to_s+')', tag_path(tag) %></div>
+             <% end %>
+        </div>
+    <% end %>
+
+</aside>

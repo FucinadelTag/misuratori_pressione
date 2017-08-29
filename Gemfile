@@ -28,3 +28,6 @@ gem "babel-transpiler"
 
 
 gem "moltin"
+
+gem "prismic.io", require: "prismic"
+gem "prismic_middleman", :git => 'git://github.com/FucinadelTag/FdtGems', :branch => '1.0'

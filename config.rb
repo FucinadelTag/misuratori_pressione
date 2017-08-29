@@ -23,6 +23,23 @@ configure :development do
   activate :livereload
 end
 
+activate :prismic_middleman do |f|
+  f.url = 'https://misuratoripressione.prismic.io/api'
+
+  f.conf = {
+        'blog'=> {
+            'permalink'=> '/blog/{category}/{year}-{month}-{day}-{title}.html',
+            'default_extension'=> ".erb",
+            'template'=> "fdt_templates/blog.tt"
+        },
+        'news'=> {
+            'permalink'=> '/news/view/{title}.html',
+            'default_extension'=> ".erb",
+            'template'=> "fdt_templates/news.tt"
+        }
+    }
+end
+
 activate :blog do |blog|
     blog.name = 'blog'
     blog.default_extension = ".erb"
