@@ -42,7 +42,7 @@
 
                 (function() { // DON'T EDIT BELOW THIS LINE
                     var d = document, s = d.createElement('script');
-                    s.src = '//misuratoripressione.disqus.com/embed.js';
+                    s.src = 'https://https-www-misuratore-pressione-eu.disqus.com/embed.js';
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
                 })();
@@ -57,4 +57,7 @@
     </div>
 
     <hr>
+
+    <%= partial "partials/form", :locals => { :form_class_large => "large-7", :phone_class_large => "large-5", :precentuale_sconto => "30", :id_pagina => "misuratore_pressione"} %>
+
 <% end %>
