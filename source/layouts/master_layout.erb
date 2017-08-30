@@ -22,10 +22,6 @@
 
         <%= stylesheet_link_tag :site %>
 
-        <% if current_page.data.headCode  %>
-            <%= current_page.data.headCode %>
-        <% end %>
-
         <!-- Facebook Pixel Code -->
             <script>
                 !function(f,b,e,v,n,t,s)
@@ -43,6 +39,10 @@
                 <img height="1" width="1" src="https://www.facebook.com/tr?id=277696526049584&ev=PageView&noscript=1"/>
             </noscript>
         <!-- End Facebook Pixel Code -->
+
+            <% if current_page.data.headCode  %>
+                <%= current_page.data.headCode %>
+            <% end %>
 
     </head>
 
