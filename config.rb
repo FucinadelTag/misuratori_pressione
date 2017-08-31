@@ -62,6 +62,22 @@ activate :blog do |blog|
     }
 end
 
+activate :blog do |blog|
+    blog.name = 'news'
+    blog.default_extension = ".erb"
+
+    blog.tag_template = "tag.html"
+    blog.calendar_template = "calendar.html"
+    blog.sources = "/news/view/{title}.html"
+    blog.permalink = "/news/view/{title}.html"
+
+    # Enable pagination
+    blog.paginate = true
+    blog.per_page = 10
+    blog.page_link = "page/{num}"
+
+end
+
 # Change Compass configuration
 compass_config do |config|
   config.add_import_path "bower_components/foundation-sites/scss/"
