@@ -4,6 +4,16 @@ title: Misuratore di pressione
 
 immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/c65636c0f1f5e5779d8fef9721a4f093b014f431_dettagliouomo001.jpg
 
+conversionCode: >
+                    <!-- MOMENT -->
+                    <script src="https://s3-eu-west-1.amazonaws.com/cdn.fucinadeltag.it/moment.js"></script>
+                    <script type="text/javascript">
+                        moment.locale('it');
+                        var lastDayOfMonth = moment().endOf('month').format("D\ MMMM YYYY");
+                        $(".dataPromo").html(lastDayOfMonth);
+                    </script>
+                    <!-- /MOMENT -->
+
 ---
 
 <section class="title-container show-for-large" style="background: url(<%= current_page.data.immagineTestata %>) center no-repeat; background-size: cover;">
