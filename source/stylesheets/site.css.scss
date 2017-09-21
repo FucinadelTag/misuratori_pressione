@@ -71,6 +71,12 @@ $ctaButton-radius: 30px !default;
     text-decoration: line-through;
 }
 
+.sconto {
+    font-size: rem-calc(20, null);
+    font-weight: 700;
+    color: $rosso-color;
+}
+
 .leggero {
   color: $dark-gray;
   font-size: 0.9rem;
@@ -172,6 +178,58 @@ div.spazio_bianco_small {
     .subSconto {
         font-size: rem-calc(14, null);
         font-weight: 300;
+        color: #000000;
+    }
+
+    .dataPromo {
+        text-transform: capitalize;
+    }
+}
+
+.banner {
+    text-align: center;
+    padding-top: rem-calc(50, null);
+    padding-bottom: rem-calc(50, null);
+    padding-left: rem-calc(20, null);
+    padding-right: rem-calc(20, null);
+    letter-spacing: 1px;
+
+    .sconto {
+        font-size: 5vw;
+        text-transform: none;
+        font-weight: 700;
+        font-style: normal;
+        color: $rosso-color;
+    }
+
+    .subSconto {
+        font-size: 3vw;
+        text-transform: none;
+        font-weight: 100;
+        font-style: normal;
+        color: #000000;
+    }
+
+}
+
+.banner-small {
+    text-align: center;
+    padding-bottom: rem-calc(20, null);
+    padding-left: rem-calc(10, null);
+    padding-right: rem-calc(10, null);
+
+    .sconto {
+        font-size: rem-calc(40, null);
+        font-weight: 700;
+        color: $rosso-color;
+        line-height: 3rem;
+    }
+
+
+    .subSconto {
+        font-size: rem-calc(20, null);
+        font-weight: 300;
+        line-height: 1rem;
         color: #000000;
     }
 
