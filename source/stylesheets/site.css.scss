@@ -12,6 +12,10 @@ $rosso-color: #FF0A0A !default;
 $ctaButton-header-color: $evidence-color !default;
 $ctaButton-radius: 30px !default;
 
+.hide {
+    visibility: hidden;
+}
+
 .title-container {
     background-size: cover;
     padding-top: 3%;

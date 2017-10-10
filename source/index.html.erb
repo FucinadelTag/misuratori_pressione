@@ -9,11 +9,29 @@ immagineTestata: https://prismic-io.s3.amazonaws.com/misuratoripressione/c65636c
 
 conversionCode: >
                     <!-- MOMENT -->
-                    <script src="https://s3-eu-west-1.amazonaws.com/cdn.fucinadeltag.it/moment.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/it.js"></script>
                     <script type="text/javascript">
                         moment.locale('it');
                         var lastDayOfMonth = moment().endOf('month').format("D\ MMMM YYYY");
                         $(".dataPromo").html('15 Ottobre');
+
+                        //Getione call to action
+                        var day = moment().weekday();
+                        if (day == 6 || day == 7 ){
+                            $('.ecommerceAction').removeClass('hide')
+                            $('.phoneAction').addClass('hide')
+                        } else {
+                            var hour = moment().hour();
+                            if (hour >= 9 && hour <= 17){
+                                $('.phoneAction').removeClass('hide')
+                                $('.ecommerceAction').addClass('hide')
+                            } else {
+                                $('.ecommerceAction').removeClass('hide')
+                                $('.phoneAction').addClass('hide')
+                            }
+                        }
+
                     </script>
                     <!-- /MOMENT -->
 
@@ -404,7 +422,7 @@ conversionCode: >
         <p>
             <h4>Manuale d'uso</h3>
             <ul>
-                <li>Manuale d'uso con disegni</li>
+                <li>Manuale d'uso <strong>IN ITALIANO</strong></li>
             </ul>
         </p>
         <p>
@@ -415,7 +433,7 @@ conversionCode: >
         </p>
     </div>
     <div class="columns small-12 medium-7">
-        <img src="https://prismic-io.s3.amazonaws.com/misuratoripressione/62f1ca4c096f76222f4bf53c9c0151cf892c109a_still-life003.jpg">
+        <img src="https://prismic-io.s3.amazonaws.com/misuratoripressione/a7328a341521cea10038971075ea94701217f6db_62f1ca4c096f76222f4bf53c9c0151cf892c109a_still-life003-1.jpg">
     </div>
 </div>
 
