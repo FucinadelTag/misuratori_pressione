@@ -14,7 +14,7 @@ conversionCode: >
                     <script type="text/javascript">
                         moment.locale('it');
                         var lastDayOfMonth = moment().endOf('month').format("D\ MMMM YYYY");
-                        $(".dataPromo").html('15 Ottobre');
+                        $(".dataPromo").html(lastDayOfMonth);
 
                         //Getione call to action
                         var day = moment().weekday();
