@@ -17,20 +17,20 @@ conversionCode: >
                         $(".dataPromo").html(lastDayOfMonth);
 
                         //Getione call to action
-                        var day = moment().weekday();
-                        if (day == 6 || day == 7 ){
-                            $('.ecommerceAction').removeClass('hide')
-                            $('.phoneAction').addClass('hide')
-                        } else {
-                            var hour = moment().hour();
-                            if (hour >= 9 && hour <= 17){
-                                $('.phoneAction').removeClass('hide')
-                                $('.ecommerceAction').addClass('hide')
-                            } else {
-                                $('.ecommerceAction').removeClass('hide')
-                                $('.phoneAction').addClass('hide')
-                            }
-                        }
+                        // var day = moment().weekday();
+                        // if (day == 6 || day == 7 ){
+                        //     $('.ecommerceAction').removeClass('hide')
+                        //     $('.phoneAction').addClass('hide')
+                        // } else {
+                        //     var hour = moment().hour();
+                        //     if (hour >= 9 && hour <= 17){
+                        //         $('.phoneAction').removeClass('hide')
+                        //         $('.ecommerceAction').addClass('hide')
+                        //     } else {
+                        //         $('.ecommerceAction').removeClass('hide')
+                        //         $('.phoneAction').addClass('hide')
+                        //     }
+                        // }
 
                     </script>
                     <!-- /MOMENT -->
