@@ -1,5 +1,5 @@
 ---
-title: Solede Misuratore di Pressione - Sconto 70%
+title: Solede Misuratore di Pressione - Sconto 50%
 
 description: >
     Prova il Nuovo Misuratore di Pressione Solede: Facile, Automatico e Preciso. Spedizione Gratuita. Ordini al Telefono e Paghi alla Consegna!
@@ -13,24 +13,33 @@ conversionCode: >
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/it.js"></script>
                     <script type="text/javascript">
                         moment.locale('it');
-                        var lastDayOfMonth = moment().endOf('month').format("D\ MMMM YYYY");
-                        $(".dataPromo").html(lastDayOfMonth);
+                        var lastDayOfPromo = moment().endOf('month').format("D\ MMMM YYYY");
+                        var dayMonth = moment().date();
+
+                        if (dayMonth <= 15){
+                            lastDayOfPromo = moment().endOf('month').format("MMMM YYYY");
+                            lastDayOfPromo = '15 ' + lastDayOfPromo;
+                        }
+
+                        $(".dataPromo").html(lastDayOfPromo);
+
+
 
                         //Getione call to action
-                        // var day = moment().weekday();
-                        // if (day == 6 || day == 7 ){
-                        //     $('.ecommerceAction').removeClass('hide')
-                        //     $('.phoneAction').addClass('hide')
-                        // } else {
-                        //     var hour = moment().hour();
-                        //     if (hour >= 9 && hour <= 17){
-                        //         $('.phoneAction').removeClass('hide')
-                        //         $('.ecommerceAction').addClass('hide')
-                        //     } else {
-                        //         $('.ecommerceAction').removeClass('hide')
-                        //         $('.phoneAction').addClass('hide')
-                        //     }
-                        // }
+                        var day = moment().weekday();
+                        if (day == 6 || day == 7 ){
+                            $('.ecommerceAction').removeClass('hide')
+                            $('.phoneAction').addClass('hide')
+                        } else {
+                            var hour = moment().hour();
+                            if (hour >= 9 && hour <= 17){
+                                $('.phoneAction').removeClass('hide')
+                                $('.ecommerceAction').addClass('hide')
+                            } else {
+                                $('.ecommerceAction').removeClass('hide')
+                                $('.phoneAction').addClass('hide')
+                            }
+                        }
 
                     </script>
                     <!-- /MOMENT -->
